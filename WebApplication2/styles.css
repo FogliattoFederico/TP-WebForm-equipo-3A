@@ -1,0 +1,62 @@
+﻿.header {
+    color: red;
+    text-align: center;
+    background-color: black;
+    padding: 50px;
+ }
+
+.header h1{
+    font-weight: bold;
+}
+
+.footer{
+    text-align: center;
+    background-color: black;
+    padding: 30px;
+    height: 72px;
+}
+
+.footer p{
+    color: white;
+    font-weight: bold;
+}
+
+.voucher-container{
+    height: 650px;
+}
+
+.voucher-container p{
+    text-align: justify;
+    margin: 20px;
+    font-size: 20px;
+    line-height: 2;
+}
+
+
+.voucher{
+    background-color: gray;
+    height: 400px;
+    margin-bottom: 150px;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+}
+
+.boton{
+    padding: 10px;
+    background-color: royalblue;
+    color: white;
+    border-radius: 10px;
+    
+    
+
+}
+
+.boton:hover{
+
+}
