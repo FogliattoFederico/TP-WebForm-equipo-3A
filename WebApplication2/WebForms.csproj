@@ -98,6 +98,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\tp-winform-equipo-3A\Dominio\Dominio.csproj">
+      <Project>{a279dfb5-8d2c-4f88-bd1c-f8a83774cf67}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\tp-winform-equipo-3A\Negocio\Negocio.csproj">
+      <Project>{26b617cf-bab5-4795-915f-f5883a6009f9}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

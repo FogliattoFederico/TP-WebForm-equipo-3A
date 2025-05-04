@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,10 @@ namespace WebApplication2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            VoucherNegocio negocio = new VoucherNegocio();
+            
+            gvVouchers.DataSource = negocio.Listar();
+            gvVouchers.DataBind();
         }
 
         protected void btn_participar_Click(object sender, EventArgs e)
