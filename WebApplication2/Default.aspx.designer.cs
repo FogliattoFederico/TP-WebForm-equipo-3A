@@ -15,21 +15,30 @@ namespace WebApplication2
     {
 
         /// <summary>
-        /// Control btn_participar.
+        /// Control txtVoucher.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_participar;
+        protected global::System.Web.UI.WebControls.TextBox txtVoucher;
 
         /// <summary>
-        /// Control gvVouchers.
+        /// Control btn_validar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvVouchers;
+        protected global::System.Web.UI.WebControls.Button btn_validar;
+
+        /// <summary>
+        /// Control lblValidado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblValidado;
     }
 }

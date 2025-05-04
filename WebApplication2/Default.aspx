@@ -13,15 +13,17 @@
         <div class="row voucher">
             <div class="col-md-4"></div>
             <div class="col-md-4 mb-3 flex">
-                <input type="text" class="form-control" id="N_voucher" placeholder="N° Voucher">
-                <asp:Button CssClass="boton" Text="Participar" ID="btn_participar" OnClick="btn_participar_Click" runat="server" />
+                <asp:TextBox ID="txtVoucher" CssClass="form-control" runat="server" placeholder="N° Voucher"></asp:TextBox>
+                <asp:Button CssClass="boton" Text="Validar" ID="btn_validar" OnClick="btn_validar_Click" runat="server" />
+                <asp:Label Text="" ID="lblValidado" runat="server" />
+            
             </div>
             <div class="col-md-4"></div>
         </div>
-        <div>
-            <asp:GridView ID="gvVouchers" runat="server">
-            </asp:GridView>
-        </div>
+       <%-- <div>
+            <asp:gridview id="gvvouchers" cssclass="table" runat="server">
+            </asp:gridview>
+        </div>--%>
 
     </div>
 
