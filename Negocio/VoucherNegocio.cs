@@ -20,7 +20,7 @@ namespace Negocio
                 datos.ejecutarLectura();
 
 
-                while(datos.Lector.Read())
+                while (datos.Lector.Read())
                 {
                     Voucher aux = new Voucher();
 
@@ -43,7 +43,7 @@ namespace Negocio
 
                     lista.Add(aux);
                 }
-               
+
 
                 return lista;
             }
@@ -57,5 +57,30 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-    }
-}
+
+
+        public void ModificarVoucher(Voucher voucher)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                //datos.setearConsulta("update Vouchers set IdCliente = @IdCliente, FechaCanje = @FechaCanje where CodigoVoucher = @CodigoVoucher");
+                datos.setearConsulta("UPDATE Vouchers set IdCliente = @IdCliente, FechaCanje = GETDATE(), IdArticulo = @IdArticulo Where CodigoVoucher = @NVoucher");
+                datos.setearParametro("@IdCliente", voucher.IdCliente);
+                //datos.setearParametro("@FechaCanje", voucher.FechaCanje);
+                datos.setearParametro("@IdArticulo", voucher.IdArticulo);
+                datos.setearParametro("@CodigoVoucher", voucher.CodigoVoucher);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+
+        }

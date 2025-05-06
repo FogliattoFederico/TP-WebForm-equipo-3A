@@ -40,6 +40,7 @@ namespace WebApplication2
                 }
                 else
                 {
+                    Session["voucher"] = txtVoucher;
                     Response.Redirect("Premios.aspx", false);
                 }
             }
