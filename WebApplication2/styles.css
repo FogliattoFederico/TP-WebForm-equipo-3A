@@ -57,6 +57,13 @@
 
 }
 
-.boton:hover{
+    .boton:hover {
+    }
 
+
+/*Formulario*/
+
+.tituloFormulario{
+    text-align: center;
+    margin: 10px 0;
 }
