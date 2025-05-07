@@ -27,7 +27,7 @@ namespace WebApplication2
             {
                 var negocio = new VoucherNegocio();
                 var lista = negocio.Listar();
-                var voucher = lista.FirstOrDefault(x => x.CodigoVoucher == txtVoucher.Text);
+                var voucher = lista.FirstOrDefault(x => x.CodigoVoucher == txtVoucher.Text.Trim());
 
                 if (voucher == null)
                 {

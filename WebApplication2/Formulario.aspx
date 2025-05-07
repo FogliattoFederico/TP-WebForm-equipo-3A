@@ -12,6 +12,7 @@
                     <div class="form-group">
                         <label for="txtDni" class="form-label">DNI</label>
                         <asp:TextBox CssClass="form-control" ID="txtDni" runat="server"></asp:TextBox>
+                        <asp:Label ID="lblDni" runat="server" Text=""></asp:Label>
                     </div>
                     <asp:Button ID="btnVerificar" CssClass="btn btn-primary mt-2 w-100" runat="server"
                         Text="Verificar DNI" OnClick="btnVerificar_Click" />
@@ -45,7 +46,7 @@
                     <label for="txtCp" class="form-label">CP</label>
                     <asp:TextBox CssClass="form-control" ID="txtCp" runat="server"></asp:TextBox>
                 </div>
-                <asp:Button ID="btnParticipar" CssClass="btn btn-primary" runat="server" Text="Participar" OnClick="btnParticipar_Click"     />
+                <asp:Button ID="btnParticipar" CssClass="btn btn-primary" runat="server" Text="Participar" OnClick="btnParticipar_Click" />
             </div>
         </div>
         <div class="col-md-4"></div>
