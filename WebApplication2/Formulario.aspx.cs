@@ -2,6 +2,7 @@
 using Negocio;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Services.Description;
@@ -12,11 +13,16 @@ namespace WebApplication2
 {
     public partial class Formulario : System.Web.UI.Page
     {
-       
+
         protected void Page_Load(object sender, EventArgs e)
         {
             lblDni.Text = "";
-            btnParticipar.Enabled = false;
+            lblemail.Text = "";
+            if (!IsPostBack)
+            {
+                btnParticipar.Enabled = false;
+
+            }
         }
 
         protected void btnVerificar_Click(object sender, EventArgs e)
@@ -35,7 +41,10 @@ namespace WebApplication2
                 txtCiudad.Text = cliente.Ciudad;
                 txtCp.Text = cliente.Cp.ToString();
                 txtDireccion.Text = cliente.Direccion;
-            }else
+
+                btnParticipar.Enabled = true;
+            }
+            else
             {
                 lblDni.Text = "El DNI no se encuentra registrado";
                 txtApellido.Text = "";
@@ -47,7 +56,7 @@ namespace WebApplication2
                 return;
             }
 
-       
+
         }
 
         protected void btnParticipar_Click(object sender, EventArgs e)
@@ -64,6 +73,14 @@ namespace WebApplication2
                 cliente.Cp = int.Parse(txtCp.Text);
                 cliente.Direccion = txtDireccion.Text;
 
+                if (!System.Text.RegularExpressions.Regex.IsMatch(
+            txtEmail.Text,
+            @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+                {
+                    lblemail.Text = "Email no válido";
+                    return;
+                }
+
                 negocio.AgregarCliente(cliente);
             }
             catch (Exception ex)
@@ -71,9 +88,71 @@ namespace WebApplication2
 
                 throw ex;
             }
-            
-            
- 
+
+
+
+        }
+
+        private void controlAceptar()
+        {
+            // Lista de todos los TextBox a validar
+            TextBox[] camposRequeridos =
+            {
+            txtApellido, txtNombre, txtCiudad,
+            txtDireccion, txtDni, txtCp, txtEmail
+            };
+
+            // Verifica si todos los campos tienen texto válido
+            bool todosCompletos = camposRequeridos.All(txt =>
+                !string.IsNullOrWhiteSpace(txt.Text));
+
+            btnParticipar.Enabled = todosCompletos;
+
+            // Opcional: Cambiar estilo visual cuando está deshabilitado
+           /* if (!todosCompletos)
+            {
+                btnParticipar.CssClass = "btn btn-secondary";
+            }
+            else
+            {
+                btnParticipar.CssClass = "btn btn-primary";
+            }*/
+        }
+
+        protected void txtDni_TextChanged(object sender, EventArgs e)
+        {
+
+            controlAceptar();
+        }
+
+        protected void txtApellido_TextChanged(object sender, EventArgs e)
+        {
+            controlAceptar();
+        }
+
+        protected void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            controlAceptar();
+        }
+
+        protected void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            controlAceptar();
+        }
+
+        protected void txtDireccion_TextChanged(object sender, EventArgs e)
+        {
+            controlAceptar();
+        }
+
+        protected void txtCiudad_TextChanged(object sender, EventArgs e)
+        {
+            controlAceptar();
+        }
+
+        protected void txtCp_TextChanged(object sender, EventArgs e)
+        {
+            controlAceptar();
         }
     }
 }
