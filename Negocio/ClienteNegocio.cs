@@ -94,6 +94,7 @@ namespace Negocio
                 datos.setearParametro("@ciudad", cliente.Ciudad);
                 datos.setearParametro("@cp", cliente.Cp);
                 datos.setearParametro("@id", cliente.Id);
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {

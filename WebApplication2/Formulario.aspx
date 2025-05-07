@@ -48,6 +48,7 @@
                     <asp:TextBox CssClass="form-control" ID="txtCp" OnTextChanged="txtCp_TextChanged" AutoPostBack="true" runat="server" TextMode="Number"></asp:TextBox>
                 </div>
                 <asp:Button ID="btnParticipar" CssClass="btn btn-primary" runat="server" Text="Participar" OnClick="btnParticipar_Click" />
+                <asp:Label ID="lblResultado" cssClass="text-success" runat="server" Text=""></asp:Label>
             </div>
         </div>
         <div class="col-md-4"></div>
