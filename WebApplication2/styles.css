@@ -67,3 +67,29 @@
     text-align: center;
     margin: 10px 0;
 }
+
+
+/*  Agregador master  */
+html, body {
+    height: 100%; /* Todo el alto de la ventana */
+    margin: 0; /* Borro el margen por defecto del navegador */
+}
+
+.contenido-principal {
+    flex: 1; /*  Utilizar todo el espacio disponible (header + WebForm)  */
+}
+
+form {
+    display: flex; /*  posicion tags hijos en vertical  */
+    flex-direction: column; /*  los ordena en columna  */
+    height: 100%; /*  todo el alto del <body> en este caso  */
+}
+
+
+/*  Premios  */
+.contenedor-premios {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+}

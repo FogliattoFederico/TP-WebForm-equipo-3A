@@ -62,7 +62,7 @@ namespace WebApplication2
 
 
 
-                Response.Redirect("Default.aspx", false); // Redireccion.
+                Response.Redirect("Formulario.aspx", false); // Redireccion.
                 //Response.Redirect("Default.aspx?PremioCanjeado=" + idPremio, false); // Redireccion con paso idPremio por URL(OPCIONAL).
             }
         }
