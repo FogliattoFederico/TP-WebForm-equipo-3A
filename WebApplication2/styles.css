@@ -52,7 +52,7 @@
 
 .boton {
     color: white;
-    padding: 12px 24px;
+    padding: 8px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -110,8 +110,8 @@ form {
 }
 
 .lead {
-    text-align: start;
-    width: 1100px;
+    text-align: justify;
+    width: 1200px;
     margin: 30px auto;
     font-size: 20px;
     line-height: 2;
