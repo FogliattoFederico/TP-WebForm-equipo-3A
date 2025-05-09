@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net;
+using System.Net.Mail;
 
 namespace WebApplication2
 {
@@ -103,6 +105,9 @@ namespace WebApplication2
                     negocio.AgregarCliente(cliente);
                     lblResultado.Text = "Cliente agregado correctamente";
                 }
+
+                //enviar email
+                EnviarCorreoConfirmacion(txtEmail.Text, txtNombre.Text);
             }
             catch (Exception ex)
             {
@@ -113,6 +118,26 @@ namespace WebApplication2
 
 
         }
+
+        public static void EnviarCorreoConfirmacion(string destinatario, string nombre)
+        {
+            
+            var remitente = "programacionlina@gmail.com";
+            var contraseña = "dpzs yqbz lkuz dick";
+
+            var mensaje = new MailMessage();
+            mensaje.From = new MailAddress(remitente);
+            mensaje.To.Add(destinatario);
+            mensaje.Subject = "Confirmación de registro en la promoción";
+            mensaje.Body = $"Hola {nombre},\n\n¡Tu registro en la promoción ha sido exitoso!\n¡¡Ya estas Participando!!\n\n\nSuscribete a nuestro NewsLetter para conocer mas novedades.\n\n";
+
+            var smtp = new SmtpClient("smtp.gmail.com", 587);
+            smtp.Credentials = new NetworkCredential(remitente, contraseña);
+            smtp.EnableSsl = true;
+
+            smtp.Send(mensaje);
+        }
+
 
         private void controlAceptar()
         {
@@ -138,6 +163,7 @@ namespace WebApplication2
              {
                  btnParticipar.CssClass = "btn btn-primary";
              }*/
+
         }
 
         protected void txtDni_TextChanged(object sender, EventArgs e)
