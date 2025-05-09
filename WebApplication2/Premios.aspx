@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="contenedor-premios">
         <h1 class="tituloFormulario">Premios</h1>
-        <p class="lead text-center mb-5 px-3">
+        <p class="lead  mb-5 px-3">
             A continuación, podrá ver el catálogo de premios disponibles para canjear con su voucher. 
             Cada producto ha sido seleccionado especialmente para nuestros participantes. 
             Una vez elegido su premio, presione el botón "Participar" correspondiente. 
