@@ -14,7 +14,7 @@
             <div class="col-md-4"></div>
             <div class="col-md-4 mb-3 flex">
                 <asp:TextBox ID="txtVoucher" CssClass="form-control" runat="server" placeholder="N° Voucher"></asp:TextBox>
-                <asp:Button CssClass="boton" Text="Validar" ID="btn_validar" OnClick="btn_validar_Click" runat="server" />
+                <asp:Button CssClass="boton btn btn-primary" Text="Validar" ID="btn_validar" OnClick="btn_validar_Click" runat="server" />
                 <asp:Label Text="" ID="lblValidado" runat="server" />
             </div>
             <div class="col-md-4"></div>

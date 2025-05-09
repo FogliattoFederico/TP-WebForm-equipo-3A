@@ -15,9 +15,7 @@ namespace WebApplication2
     {
        protected void Page_Load(object sender, EventArgs e)
         {
-            //ClienteNegocio negocio = new ClienteNegocio();
-            //gvvouchers.DataSource = negocio.Listar();
-            //gvvouchers.DataBind();
+           lblValidado.Text = "";
 
         }
 
