@@ -57,7 +57,7 @@ namespace WebApplication2
             {
                 int idPremio = int.Parse(e.CommandArgument.ToString());
 
-                Session["PremioCanjeado"] = idPremio; // Guardo id del premio canjeado en session;
+                Session.Add( "PremioCanjeado",  idPremio); // Guardo id del premio canjeado en session;
                 //Session.Add("PremioCanjeado", idPremio);
 
 

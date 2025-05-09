@@ -65,7 +65,7 @@ namespace Negocio
             try
             {
                 //datos.setearConsulta("update Vouchers set IdCliente = @IdCliente, FechaCanje = @FechaCanje where CodigoVoucher = @CodigoVoucher");
-                datos.setearConsulta("UPDATE Vouchers set IdCliente = @IdCliente, FechaCanje = GETDATE(), IdArticulo = @IdArticulo Where CodigoVoucher = @NVoucher");
+                datos.setearConsulta("UPDATE Vouchers set IdCliente = @IdCliente, FechaCanje = GETDATE(), IdArticulo = @IdArticulo Where CodigoVoucher = @CodigoVoucher");
                 datos.setearParametro("@IdCliente", voucher.IdCliente);
                 //datos.setearParametro("@FechaCanje", voucher.FechaCanje);
                 datos.setearParametro("@IdArticulo", voucher.IdArticulo);

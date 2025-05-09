@@ -15,7 +15,7 @@ namespace WebApplication2
 {
     public partial class Formulario : System.Web.UI.Page
     {
-       
+
         protected void Page_Load(object sender, EventArgs e)
         {
             lblDni.Text = "";
@@ -67,7 +67,9 @@ namespace WebApplication2
 
             ClienteNegocio negocio = new ClienteNegocio();
             List<Cliente> lista = new List<Cliente>();
-            
+            Voucher voucher = new Voucher();
+            VoucherNegocio voucherNegocio = new VoucherNegocio();
+
 
             try
             {
@@ -94,7 +96,7 @@ namespace WebApplication2
                     return;
                 }
 
-                if (clienteExistente != null )
+                if (clienteExistente != null)
                 {
                     negocio.ModificarCliente(cliente);
                     lblResultado.Text = "Cliente modificado correctamente";
@@ -105,6 +107,13 @@ namespace WebApplication2
                     negocio.AgregarCliente(cliente);
                     lblResultado.Text = "Cliente agregado correctamente";
                 }
+
+                voucher.IdCliente = cliente.Id;
+                voucher.CodigoVoucher = Session["voucher"].ToString();
+                voucher.IdArticulo = (int)Session["PremioCanjeado"];
+
+
+                voucherNegocio.ModificarVoucher(voucher);
 
                 //enviar email
                 EnviarCorreoConfirmacion(txtEmail.Text, txtNombre.Text);
@@ -121,7 +130,7 @@ namespace WebApplication2
 
         public static void EnviarCorreoConfirmacion(string destinatario, string nombre)
         {
-            
+
             var remitente = "programacionlina@gmail.com";
             var contraseña = "dpzs yqbz lkuz dick";
 
@@ -153,16 +162,6 @@ namespace WebApplication2
                 !string.IsNullOrWhiteSpace(txt.Text));
 
             btnParticipar.Enabled = todosCompletos;
-
-            // Opcional: Cambiar estilo visual cuando está deshabilitado
-            /* if (!todosCompletos)
-             {
-                 btnParticipar.CssClass = "btn btn-secondary";
-             }
-             else
-             {
-                 btnParticipar.CssClass = "btn btn-primary";
-             }*/
 
         }
 
