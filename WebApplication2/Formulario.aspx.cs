@@ -38,12 +38,12 @@ namespace WebApplication2
             Cliente cliente = lista.FirstOrDefault(x => x.Dni == txtDni.Text.Trim());
             if (cliente != null)
             {
-                txtApellido.Text = cliente.Apellido;
-                txtNombre.Text = cliente.Nombre;
-                txtEmail.Text = cliente.Email;
-                txtCiudad.Text = cliente.Ciudad;
+                txtApellido.Text = cliente.Apellido.Trim();
+                txtNombre.Text = cliente.Nombre.Trim();
+                txtEmail.Text = cliente.Email.Trim();
+                txtCiudad.Text = cliente.Ciudad.Trim();
                 txtCp.Text = cliente.Cp.ToString();
-                txtDireccion.Text = cliente.Direccion;
+                txtDireccion.Text = cliente.Direccion.Trim();
 
                 btnParticipar.Enabled = true;
             }
@@ -81,13 +81,13 @@ namespace WebApplication2
                 // Crear objeto cliente (nuevo o existente)
                 Cliente cliente = clienteExistente ?? new Cliente();
 
-                cliente.Dni = txtDni.Text;
-                cliente.Apellido = txtApellido.Text;
-                cliente.Nombre = txtNombre.Text;
+                cliente.Dni = txtDni.Text.Trim();
+                cliente.Apellido = txtApellido.Text.Trim();
+                cliente.Nombre = txtNombre.Text.Trim();
                 cliente.Email = txtEmail.Text;
-                cliente.Ciudad = txtCiudad.Text;
-                cliente.Cp = int.Parse(txtCp.Text);
-                cliente.Direccion = txtDireccion.Text;
+                cliente.Ciudad = txtCiudad.Text.Trim();
+                cliente.Cp = int.Parse(txtCp.Text.Trim());
+                cliente.Direccion = txtDireccion.Text.Trim();
 
                 Session.Add("nombre", cliente.Nombre);
 
