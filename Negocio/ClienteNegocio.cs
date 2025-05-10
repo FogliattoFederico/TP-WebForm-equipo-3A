@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Dominio;
 
 namespace Negocio
@@ -54,12 +55,12 @@ namespace Negocio
         }
 
 
-        public void AgregarCliente(Cliente cliente)
+        public int AgregarCliente(Cliente cliente)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("insert into clientes (Documento, Nombre, Apellido, Email, Direccion, Ciudad, CP) values (@documento, @nombre, @apellido, @email, @direccion, @ciudad, @cp);");
+                datos.setearConsulta("insert into clientes (Documento, Nombre, Apellido, Email, Direccion, Ciudad, CP) values (@documento, @nombre, @apellido, @email, @direccion, @ciudad, @cp);SELECT SCOPE_IDENTITY();");
                 datos.setearParametro("@documento", cliente.Dni);
                 datos.setearParametro("@nombre", cliente.Nombre);
                 datos.setearParametro("@apellido", cliente.Apellido);
@@ -67,7 +68,9 @@ namespace Negocio
                 datos.setearParametro("@direccion", cliente.Direccion);
                 datos.setearParametro("@ciudad", cliente.Ciudad);
                 datos.setearParametro("@cp", cliente.Cp);
-                datos.ejecutarAccion();
+                //datos.ejecutarAccion();
+
+                return Convert.ToInt32(datos.ejecutarScalar()); // Solo esto
             }
             catch (Exception ex)
             {

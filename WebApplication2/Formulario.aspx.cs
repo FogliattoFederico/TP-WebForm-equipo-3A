@@ -71,6 +71,7 @@ namespace WebApplication2
             VoucherNegocio voucherNegocio = new VoucherNegocio();
 
 
+
             try
             {
                 lista = negocio.Listar();
@@ -104,11 +105,11 @@ namespace WebApplication2
                 }
                 else
                 {
-                    negocio.AgregarCliente(cliente);
+                    voucher.IdCliente = negocio.AgregarCliente(cliente);
                     lblResultado.Text = "Cliente agregado correctamente";
                 }
 
-                voucher.IdCliente = cliente.Id;
+                //voucher.IdCliente = cliente.Id;
                 voucher.CodigoVoucher = Session["voucher"].ToString();
                 voucher.IdArticulo = (int)Session["PremioCanjeado"];
 

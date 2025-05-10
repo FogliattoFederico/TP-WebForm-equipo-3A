@@ -8,46 +8,46 @@ using System.Threading.Tasks;
 
 namespace Negocio
 {
-        public class AccesoDatos
+    public class AccesoDatos
+    {
+        //PROPIEDADES
+        private SqlConnection conexion;
+        private SqlCommand comando;
+        private SqlDataReader lector;
+
+        public SqlDataReader Lector
         {
-            //PROPIEDADES
-            private SqlConnection conexion;
-            private SqlCommand comando;
-            private SqlDataReader lector;
+            get { return lector; }
+        }
 
-            public SqlDataReader Lector
+        //CONSTRUCTOR
+        public AccesoDatos()
+        {
+            conexion = new SqlConnection("server = .\\SQLEXPRESS; database= PROMOS_DB; integrated security = true");
+            comando = new SqlCommand();
+        }
+
+        public void setearConsulta(string consulta)
+        {
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = consulta;
+        }
+
+        public void ejecutarLectura()
+        {
+            try
             {
-                get { return lector; }
-            }
+                comando.Connection = conexion;
+                conexion.Open();
+                lector = comando.ExecuteReader();
 
-            //CONSTRUCTOR
-            public AccesoDatos()
+            }
+            catch (Exception ex)
             {
-                conexion = new SqlConnection("server = .\\SQLEXPRESS; database= PROMOS_DB; integrated security = true");
-                comando = new SqlCommand();
-            }
-            
-            public void setearConsulta(string consulta)
-            {
-                comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = consulta;
-            }
 
-            public void ejecutarLectura()
-            {
-                try
-                {
-                    comando.Connection = conexion;
-                    conexion.Open();
-                    lector = comando.ExecuteReader();
-
-                }
-                catch (Exception ex)
-                {
-
-                    throw ex;
-                }
+                throw ex;
             }
+        }
 
         public void ejecutarAccion()
         {
@@ -72,12 +72,31 @@ namespace Negocio
         }
 
         public void cerrarConexion()
+        {
+            if (lector != null)
             {
-                if (lector != null)
-                {
-                    lector.Close();
-                }
+                lector.Close();
+            }
+            conexion.Close();
+        }
+
+        public object ejecutarScalar()
+        {
+            try
+            {
+                comando.Connection = conexion;
+                conexion.Open();
+                return comando.ExecuteScalar(); // ejecuta la consulta y devuelve el primer valor de la primera fila
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
                 conexion.Close();
             }
         }
- }
+
+    }
+}
