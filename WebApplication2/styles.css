@@ -1,4 +1,21 @@
-﻿.header {
+﻿/*  Agregador master  */
+html, body {
+    height: 100%; /* Todo el alto de la ventana */
+    margin: 0; /* Borro el margen por defecto del navegador */
+}
+
+.contenido-principal {
+    flex: 1; /*  Utilizar todo el espacio disponible (header + WebForm)  */
+}
+
+form {
+    display: flex; /*  posicion tags hijos en vertical  */
+    flex-direction: column; /*  los ordena en columna  */
+    height: 100%; /*  todo el alto del <body> en este caso  */
+}
+
+/*Pagina Default*/
+.header {
     color: red;
     text-align: center;
     background-color: black;
@@ -51,6 +68,7 @@
 }
 
 .boton {
+    background-color:dodgerblue;
     color: white;
     padding: 8px 20px;
     border: none;
@@ -64,7 +82,7 @@
 }
 
     .boton:hover {
-        background-color: #45a049;
+        background-color: blue;
         transform: translateY(-3px);
         box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -82,26 +100,19 @@
     text-align: center;
     margin: 10px 0;
 }
-
-
-/*  Agregador master  */
-html, body {
-    height: 100%; /* Todo el alto de la ventana */
-    margin: 0; /* Borro el margen por defecto del navegador */
+/* Quitar flechitas de los campos tipo number (Chrome, Safari, Edge) */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-.contenido-principal {
-    flex: 1; /*  Utilizar todo el espacio disponible (header + WebForm)  */
+/* Quitar flechitas en Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }
 
-form {
-    display: flex; /*  posicion tags hijos en vertical  */
-    flex-direction: column; /*  los ordena en columna  */
-    height: 100%; /*  todo el alto del <body> en este caso  */
-}
-
-
-/*  Premios  */
+/*Pagina Premios  */
 .contenedor-premios {
     display: flex;
     flex-direction: column;
@@ -117,14 +128,11 @@ form {
     line-height: 2;
 }
 
-/* Quitar flechitas de los campos tipo number (Chrome, Safari, Edge) */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* Quitar flechitas en Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
+/*Pagina Confirmacion*/
+.confirmacion {
+    height:400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
 }

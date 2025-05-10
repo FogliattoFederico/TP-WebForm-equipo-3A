@@ -118,6 +118,8 @@ namespace WebApplication2
 
                 //enviar email
                 EnviarCorreoConfirmacion(txtEmail.Text, txtNombre.Text);
+
+                Response.Redirect("Confirmacion.aspx", false);
             }
             catch (Exception ex)
             {
