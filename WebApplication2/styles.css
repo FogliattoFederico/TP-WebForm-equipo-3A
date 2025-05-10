@@ -116,3 +116,15 @@ form {
     font-size: 20px;
     line-height: 2;
 }
+
+/* Quitar flechitas de los campos tipo number (Chrome, Safari, Edge) */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Quitar flechitas en Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
