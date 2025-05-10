@@ -89,6 +89,8 @@ namespace WebApplication2
                 cliente.Cp = int.Parse(txtCp.Text);
                 cliente.Direccion = txtDireccion.Text;
 
+                Session.Add("nombre", cliente.Nombre);
+
                 if (!System.Text.RegularExpressions.Regex.IsMatch(
                 txtEmail.Text,
                 @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
@@ -101,6 +103,7 @@ namespace WebApplication2
                 {
                     negocio.ModificarCliente(cliente);
                     lblResultado.Text = "Cliente modificado correctamente";
+                    voucher.IdCliente = cliente.Id;
 
                 }
                 else
@@ -109,7 +112,7 @@ namespace WebApplication2
                     lblResultado.Text = "Cliente agregado correctamente";
                 }
 
-                //voucher.IdCliente = cliente.Id;
+               
                 voucher.CodigoVoucher = Session["voucher"].ToString();
                 voucher.IdArticulo = (int)Session["PremioCanjeado"];
 
