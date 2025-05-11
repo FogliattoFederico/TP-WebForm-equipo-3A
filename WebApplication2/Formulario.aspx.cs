@@ -21,10 +21,13 @@ namespace WebApplication2
             lblDni.Text = "";
             lblemail.Text = "";
             lblResultado.Text = "";
+
+            habilitarCampos(false); //
+
+
             if (!IsPostBack)
             {
                 btnParticipar.Enabled = false;
-
             }
         }
 
@@ -34,6 +37,7 @@ namespace WebApplication2
             ClienteNegocio negocio = new ClienteNegocio();
             lista = negocio.Listar();
 
+            habilitarCampos(true); //********************
 
             Cliente cliente = lista.FirstOrDefault(x => x.Dni == txtDni.Text.Trim());
             if (cliente != null)
@@ -49,7 +53,7 @@ namespace WebApplication2
             }
             else
             {
-                lblDni.Text = "El DNI no se encuentra registrado";
+                lblDni.Text = "El DNI no se encuentra registrado. Por favor, complete los campos para registrarlo.";
                 txtApellido.Text = "";
                 txtNombre.Text = "";
                 txtEmail.Text = "";
@@ -97,6 +101,7 @@ namespace WebApplication2
                 @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
                 {
                     lblemail.Text = "Email no válido";
+                    habilitarCampos(true); // ******************
                     return;
                 }
 
@@ -113,7 +118,7 @@ namespace WebApplication2
                     lblResultado.Text = "Cliente agregado correctamente";
                 }
 
-               
+
                 voucher.CodigoVoucher = Session["voucher"].ToString();
                 voucher.IdArticulo = (int)Session["PremioCanjeado"];
 
@@ -155,57 +160,79 @@ namespace WebApplication2
         }
 
 
-        private void controlAceptar()
+        //private void controlAceptar()
+        //{
+        //    // Lista de todos los TextBox a validar
+        //    TextBox[] camposRequeridos =
+        //    {
+        //    txtApellido, txtNombre, txtCiudad,
+        //    txtDireccion, txtDni, txtCp, txtEmail
+        //    };
+
+        //    // Verifica si todos los campos tienen texto válido
+        //    bool todosCompletos = camposRequeridos.All(txt =>
+        //        !string.IsNullOrWhiteSpace(txt.Text));
+
+        //    btnParticipar.Enabled = todosCompletos;
+
+        //}
+
+        //protected void txtDni_TextChanged(object sender, EventArgs e)
+        //{
+
+        //    controlAceptar();
+        //}
+
+        //protected void txtApellido_TextChanged(object sender, EventArgs e)
+        //{
+        //    controlAceptar();
+        //}
+
+        //protected void txtNombre_TextChanged(object sender, EventArgs e)
+        //{
+        //    controlAceptar();
+        //}
+
+        //protected void txtEmail_TextChanged(object sender, EventArgs e)
+        //{
+        //    controlAceptar();
+        //}
+
+        //protected void txtDireccion_TextChanged(object sender, EventArgs e)
+        //{
+        //    controlAceptar();
+        //}
+
+        //protected void txtCiudad_TextChanged(object sender, EventArgs e)
+        //{
+        //    controlAceptar();
+        //}
+
+        //protected void txtCp_TextChanged(object sender, EventArgs e)
+        //{
+        //    controlAceptar();
+        //}
+
+        private void habilitarCampos(bool habilitar)
         {
-            // Lista de todos los TextBox a validar
-            TextBox[] camposRequeridos =
+            if (habilitar)
             {
-            txtApellido, txtNombre, txtCiudad,
-            txtDireccion, txtDni, txtCp, txtEmail
-            };
-
-            // Verifica si todos los campos tienen texto válido
-            bool todosCompletos = camposRequeridos.All(txt =>
-                !string.IsNullOrWhiteSpace(txt.Text));
-
-            btnParticipar.Enabled = todosCompletos;
-
-        }
-
-        protected void txtDni_TextChanged(object sender, EventArgs e)
-        {
-
-            controlAceptar();
-        }
-
-        protected void txtApellido_TextChanged(object sender, EventArgs e)
-        {
-            controlAceptar();
-        }
-
-        protected void txtNombre_TextChanged(object sender, EventArgs e)
-        {
-            controlAceptar();
-        }
-
-        protected void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-            controlAceptar();
-        }
-
-        protected void txtDireccion_TextChanged(object sender, EventArgs e)
-        {
-            controlAceptar();
-        }
-
-        protected void txtCiudad_TextChanged(object sender, EventArgs e)
-        {
-            controlAceptar();
-        }
-
-        protected void txtCp_TextChanged(object sender, EventArgs e)
-        {
-            controlAceptar();
+                txtNombre.Enabled = true;
+                txtApellido.Enabled = true;
+                txtEmail.Enabled = true;
+                txtDireccion.Enabled = true;
+                txtCiudad.Enabled = true;
+                txtCp.Enabled = true;
+            }
+            else
+            {
+                txtNombre.Enabled = false;
+                txtApellido.Enabled = false;
+                txtEmail.Enabled = false;
+                txtDireccion.Enabled = false;
+                txtCiudad.Enabled = false;
+                txtCp.Enabled = false;
+            }
         }
     }
 }
