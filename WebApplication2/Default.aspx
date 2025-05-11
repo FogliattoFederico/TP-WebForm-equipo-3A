@@ -1,9 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication2.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class=" voucher-container">
+    <div class=" fondo voucher-container">
         <p>
             Con su compra, ud ha recibio un voucher para participar en el sorteo de increibles productos.
             Solo debe ingresar el número de voucher en el siguiente campo y hacer click en el botón "Participar".

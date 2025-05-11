@@ -2,12 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="contenedor-premios">
+    <div class="contenedor-premios fondo">
         <h1 class="tituloFormulario">Premios</h1>
         <p class="lead  mb-5 px-3">
             A continuación, podrá ver el catálogo de premios disponibles para canjear con su voucher. 
             Cada producto ha sido seleccionado especialmente para nuestros participantes. 
-            Una vez elegido su premio, presione el botón "Participar" correspondiente. 
+            Una vez elegido su premio, presione el botón "Seleccionar" correspondiente. 
             Recuerde que solo se permite un canje por voucher, y que la disponibilidad está sujeta a stock. 
             ¡No pierda la oportunidad de llevarse uno de estos increíbles regalos!
         </p>
@@ -26,13 +26,13 @@
                                         <span class="carousel-control-next-icon"></span>
                                     </button>
                                 </div>
-                                <div class="card-body d-flex flex-column">
+                                <div class="card-body d-flex flex-column tarjeta">
                                     <h5 class="card-title"><%# Eval("Nombre") %></h5>
-                                    <p class="card-text"><%# Eval("Descripcion") %></p>
+                                    <p class="card-text "><%# Eval("Descripcion") %></p>
                                     <asp:Button
                                         ID="btnParticipar"
                                         runat="server"
-                                        Text="Participar"
+                                        Text="Seleccionar"
                                         CssClass="btn btn-primary mt-auto mx-auto w-auto"
                                         CommandName="participar"
                                         CommandArgument='<%# Eval("Id") %>' />
