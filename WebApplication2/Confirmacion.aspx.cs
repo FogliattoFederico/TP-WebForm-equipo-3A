@@ -11,7 +11,7 @@ namespace WebApplication2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblNombre.Text = Session["nombre"].ToString();
+            
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)

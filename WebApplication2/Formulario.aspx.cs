@@ -90,6 +90,7 @@ namespace WebApplication2
                 cliente.Direccion = txtDireccion.Text.Trim();
 
                 Session.Add("nombre", cliente.Nombre);
+                Session.Add("correo", cliente.Email);
 
                 if (!System.Text.RegularExpressions.Regex.IsMatch(
                 txtEmail.Text,
