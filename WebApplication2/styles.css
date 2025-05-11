@@ -18,6 +18,7 @@ form {
     color: red;
     text-align: center;
     background-color: black;
+    height:auto;
     padding: 30px;
 }
 
@@ -38,9 +39,16 @@ form {
     }
 
 /*Pagina Default*/
+
+.fondo-voucher {
+    background-image: url("https://img.freepik.com/vector-premium/premio-confeti-celebracion-vector-premium-fondo-abstracto-oro-rojo-alta-calidad_936042-202.jpg?semt=ais_hybrid&w=740");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1000px;
+}
 .voucher-container {
     height: 710px;
-    ;
+    
 }
 
     .voucher-container p {
@@ -98,16 +106,17 @@ form {
 
 /*Pagina Premios  */
 
-.fondo {
+.fondo-premios {
     background-image: url("https://img.freepik.com/vector-premium/premio-confeti-celebracion-vector-premium-fondo-abstracto-oro-rojo-alta-calidad_936042-202.jpg?semt=ais_hybrid&w=740");
     background-repeat: no-repeat;
     background-size: cover;
+    height:1000px;
 }
 
-    .fondo p, h1 {
+    .fondo-premios p, h1 {
         color: white;
     }
-    .fondo h1 {
+    .fondo-premios h1 {
         padding: 0px;
         margin-top: -100px;
     }
@@ -139,8 +148,11 @@ form {
     padding: 20px;
 }
 
-.fondo {
-    height: 900px;
+.fondo-formulario {
+    height: 1000px;
+    background-image: url("https://img.freepik.com/vector-premium/premio-confeti-celebracion-vector-premium-fondo-abstracto-oro-rojo-alta-calidad_936042-202.jpg?semt=ais_hybrid&w=740");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 /* Quitar flechitas de los campos tipo number (Chrome, Safari, Edge) */
 input[type=number]::-webkit-inner-spin-button,
@@ -155,7 +167,15 @@ input[type=number] {
 }
 
 /*Pagina Confirmacion*/
-
+.fondo-confirmacion {
+    background-image: url("https://img.freepik.com/vector-premium/premio-confeti-celebracion-vector-premium-fondo-abstracto-oro-rojo-alta-calidad_936042-202.jpg?semt=ais_hybrid&w=740");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1000px;
+}
+.fondo-confirmacion p{
+    color: white;
+}
 .confirmacion {
     height: 720px;
     display: flex;

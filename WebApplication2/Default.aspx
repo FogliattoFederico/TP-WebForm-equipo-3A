@@ -4,7 +4,7 @@
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class=" fondo voucher-container">
+    <div class=" fondo-voucher voucher-container">
         <p>
             Con su compra, ud ha recibio un voucher para participar en el sorteo de increibles productos.
             Solo debe ingresar el número de voucher en el siguiente campo y hacer click en el botón "Participar".
