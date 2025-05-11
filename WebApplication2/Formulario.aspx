@@ -2,34 +2,78 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
-        function validarFormulario() {
+        let dniFueValido = false; // Flag para controlar si alguna vez fue válido
+
+        function manejarCambioDni() {
+            const txtDni = document.getElementById('<%= txtDni.ClientID %>');
+            const lblDni = document.getElementById('<%= lblDni.ClientID %>');
+            const dni = txtDni.value.trim();
+
+            // Si el valor actual tiene 7 u 8 dígitos, marcamos como válido
+            if (/^\d{7,8}$/.test(dni)) {
+                dniFueValido = true;
+                lblDni.textContent = "";
+            }
+            // Si alguna vez fue válido y ahora es menos de 7 dígitos, mostramos el error
+            else if (dniFueValido && dni.length < 7) {
+                lblDni.textContent = "Ingresá un DNI válido de 7 u 8 dígitos.";
+            } else {
+                lblDni.textContent = "";
+            }
+
+            // Siempre que cambie el DNI, reiniciamos el formulario
+            reiniciarFormulario();
+        }
+
+        function reiniciarFormulario() {
             const campos = [
-                '<%= txtDni.ClientID %>',
-                '<%= txtNombre.ClientID %>',
-                '<%= txtApellido.ClientID %>',
-                '<%= txtEmail.ClientID %>',
-                '<%= txtDireccion.ClientID %>',
-                '<%= txtCiudad.ClientID %>',
-                '<%= txtCp.ClientID %>'
+            '<%= txtNombre.ClientID %>',
+            '<%= txtApellido.ClientID %>',
+            '<%= txtEmail.ClientID %>',
+            '<%= txtDireccion.ClientID %>',
+            '<%= txtCiudad.ClientID %>',
+            '<%= txtCp.ClientID %>'
             ];
 
-            let completo = true;
-
             for (let id of campos) {
-                let campo = document.getElementById(id);
-                if (!campo || campo.value.trim() === "") {
-                    completo = false;
-                    break;
+                const campo = document.getElementById(id);
+                if (campo) {
+                    campo.value = "";
+                    campo.disabled = true;
                 }
             }
 
-            document.getElementById('<%= btnParticipar.ClientID %>').disabled = !completo;
+            document.getElementById('<%= btnParticipar.ClientID %>').disabled = true;
+    }
+
+    function validarFormulario() {
+        const campos = [
+            '<%= txtDni.ClientID %>',
+            '<%= txtNombre.ClientID %>',
+            '<%= txtApellido.ClientID %>',
+            '<%= txtEmail.ClientID %>',
+            '<%= txtDireccion.ClientID %>',
+            '<%= txtCiudad.ClientID %>',
+            '<%= txtCp.ClientID %>'
+        ];
+
+        let completo = true;
+
+        for (let id of campos) {
+            let campo = document.getElementById(id);
+            if (!campo || campo.disabled || campo.value.trim() === "") {
+                completo = false;
+                break;
+            }
+        }
+
+        document.getElementById('<%= btnParticipar.ClientID %>').disabled = !completo;
         }
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="fondo-formulario">
-
         <h1 class="tituloFormulario">Datos del Cliente</h1>
         <div class="row mb-3">
             <div class="col-md-4"></div>
@@ -39,7 +83,16 @@
                         <div class="form-group">
                             <label for="txtDni" class="form-label">DNI</label>
                             <%--<asp:TextBox CssClass="form-control" ID="txtDni" runat="server" AutoPostBack="true" OnTextChanged="txtDni_TextChanged" TextMode="Number"></asp:TextBox>--%>
-                            <asp:TextBox CssClass="form-control" ID="txtDni" runat="server" onkeyup="validarFormulario()" TextMode="Number"></asp:TextBox>
+                            <%--<asp:TextBox CssClass="form-control" ID="txtDni" runat="server" onkeyup="validarFormulario()" TextMode="Number"></asp:TextBox>--%>
+                            <asp:TextBox CssClass="form-control" ID="txtDni" runat="server" onkeyup="manejarCambioDni()" placeholder="Ingresá tu DNI (7 u 8 dígitos)" TextMode="SingleLine" MaxLength="8"></asp:TextBox>
+                            <asp:RegularExpressionValidator 
+                                ID="revDni" 
+                                runat="server" 
+                                ControlToValidate="txtDni" 
+                                ValidationExpression="^\d{7,8}$" 
+                                ForeColor="Red" 
+                                Display="Dynamic" 
+                                CssClass="text-danger" />
                             <asp:Label ID="lblDni" runat="server" Text="" CssClass="text-danger"></asp:Label>
                         </div>
                         <asp:Button ID="btnVerificar" CssClass="btn btn-primary mt-2 w-100" runat="server"
